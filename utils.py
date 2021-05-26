@@ -7,11 +7,11 @@ IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_CHANNELS = 66, 200, 3
 INPUT_SHAPE = (IMAGE_HEIGHT, IMAGE_WIDTH, IMAGE_CHANNELS)
 
 
-def load_image(data_dir, image_file):
+def load_image(DATADIR, image_file):
     """
     Load RGB images from a file
     """
-    return mpimg.imread(os.path.join(data_dir, image_file.strip()))
+    return mpimg.imread(os.path.join(DATADIR, image_file.strip()))
 
 
 def crop(image):
@@ -45,17 +45,17 @@ def preprocess(image):
     return image
 
 
-def choose_image(data_dir, center, left, right, steering_angle):
+def choose_image(DATADIR, center, left, right, steering_angle):
     """
     Randomly choose an image from the center, left or right, and adjust
     the steering angle.
     """
     choice = np.random.choice(3)
     if choice == 0:
-        return load_image(data_dir, left), steering_angle + 0.2
+        return load_image(DATADIR, left), steering_angle + 0.2
     elif choice == 1:
-        return load_image(data_dir, right), steering_angle - 0.2
-    return load_image(data_dir, center), steering_angle
+        return load_image(DATADIR, right), steering_angle - 0.2
+    return load_image(DATADIR, center), steering_angle
 
 
 def random_flip(image, steering_angle):
