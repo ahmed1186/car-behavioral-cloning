@@ -11,12 +11,12 @@ import os
 
 np.random.seed(0)
 
-
+DATADIR = './data/'
 def load_data(args):
     """
     Load training data and split it into training and validation set
     """
-    data_df = pd.read_csv(os.path.join(args.data_dir, 'driving_log.csv'))
+    data_df = pd.read_csv(os.path.join(DATADIR, 'driving_log.csv'))
 
     X = data_df[['center', 'left', 'right']].values
     y = data_df['steering'].values
